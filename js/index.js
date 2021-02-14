@@ -1,4 +1,76 @@
 
+// Mise en place Header
+
+// let headerBloc = document.createElement("div");
+// headerBloc.className = "container";
+
+// let headerA = document.createElement("a");
+// headerA.className = "navbar-brand";
+// headerA.href = './index.html';
+
+// let headerButton = document.createElement("button")
+// headerButton.className = "navbar-toggle";
+// headerButton.type = "button";
+// headerButton.datatoggle = "collapse";
+// headerButton.formTarget = "#navbarResponsive"; 
+
+// let headerSpan = document.createElement("span");
+// headerSpan.className = "navbar-toggle-icon";
+
+// headerButton.appendChild(headerSpan);
+// headerBloc.appendChild(headerA);
+// headerBloc.appendChild(headerButton);
+
+// let navbarList = document.createElement("div")
+// navbarList.className = "collapse navbar-collapse";
+// navbarList.id = "navbarResponsive";
+
+let navbarUl = document.createElement("ul");
+navbarUl.className = "navbar-nav ml-auto";
+
+let navLiHome = document.createElement("li");
+navLiHome.className = "nav-item active";
+
+let navHomeA = document.createElement("a");
+navHomeA.className = "nav-link";
+navHomeA.href="#";
+navHomeA.innerText = "Acceuil";
+
+navLiHome.appendChild(navHomeA);
+
+let navSpanA = document.createElement("span");
+navSpanA.className = "sr-only";
+navSpanA.innerText = "(current)";
+
+navHomeA.appendChild(navSpanA);
+
+let navLiOne = document.createElement("li");
+navLiOne.className = "nav-item";
+
+let navLiOneA = document.createElement("a");
+navLiOneA.href = "#";
+navLiOneA.innerText = "panier";
+
+navLiOne.appendChild(navLiOneA);
+
+navbarUl.appendChild(navLiHome);
+navbarUl.appendChild(navLiOne);
+
+document.getElementById("navbarResponsive").appendChild(navbarUl);
+// navbarUl.appendChild(navLiHome);
+// navbarUl.appendChild(navLiOne);
+// navbarUl.appendChild(navHomeA);
+
+// navbarList.appendChild(navbarUl);
+
+ 
+// headerBloc.appendChild(navbarList);
+
+// document.getElementById("headerBloc").appendChild(navbarList);
+
+
+
+// Requete fetch pour cartes teddy 
 
 fetch("http://localhost:3000/api/teddies").then(function(response){
   return response.json();
@@ -11,7 +83,7 @@ fetch("http://localhost:3000/api/teddies").then(function(response){
   }
 })
 
-
+// fonction pour création des cartes teddy 
 
 function createTeddyCard(teddy){
   console.log(teddy)
