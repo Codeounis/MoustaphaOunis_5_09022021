@@ -48,6 +48,7 @@ let navLiOne = document.createElement("li");
 navLiOne.className = "nav-item";
 
 let navLiOneA = document.createElement("a");
+navLiOneA.className = "nav-link";
 navLiOneA.href = "#";
 navLiOneA.innerText = "panier";
 
@@ -96,9 +97,9 @@ function createTeddyCard(teddy){
   a.href = "./product.html?id="+teddy._id;
 
   let img = document.createElement("img");
-  img.className = "card-img-top"
+  img.className = "card-img-top";
   img.src = teddy.imageUrl;
-  img.alt = "";
+  img.alt = "peliche teddy de chez Orinoco";
   a.appendChild(img);
 
   let cardBody = document.createElement("div");
