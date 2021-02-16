@@ -40,19 +40,20 @@ function createTeddyInfos(teddy){
   teddyTitle.innerText = teddy.name ; 
   
   let teddyPrice = document.createElement("h4");
-  teddyPrice.innerText = teddy.price + " €";
+  let Price = teddy.price/100;
+  teddyPrice.innerText = Price + " €";
 
   let teddyDescription = document.createElement ("p");
   teddyDescription.className = "card-text";
   teddyDescription.innerText = teddy.description;
 
-  let teddyColors = document.createElement ("span");
-  teddyColors.innerText = "<b>COLORS: </b>" + teddy.colors.join(", ");
+  // let teddyColors = document.createElement ("span");
+  // teddyColors.innerHTML= "<b>COLORS: </b>" + teddy.colors.join(", ");
 
   teddyBody.appendChild(teddyTitle);
   teddyBody.appendChild(teddyPrice);
   teddyBody.appendChild(teddyDescription);
-  teddyBody.appendChild(teddyColors);
+  // teddyBody.appendChild(teddyColors);
 
   teddyBlock.appendChild(teddyImg);
   teddyBlock.appendChild(teddyBody);

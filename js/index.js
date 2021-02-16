@@ -1,51 +1,4 @@
 
-// Mise en place Header
-
-
-let navbarUl = document.createElement("ul");
-navbarUl.className = "navbar-nav ml-auto";
-
-let navLiHome = document.createElement("li");
-navLiHome.className = "nav-item active";
-
-let navHomeA = document.createElement("a");
-navHomeA.className = "nav-link";
-navHomeA.href="#";
-navHomeA.innerText = "Acceuil";
-
-navLiHome.appendChild(navHomeA);
-
-let navSpanA = document.createElement("span");
-navSpanA.className = "sr-only";
-navSpanA.innerText = "(current)";
-
-navHomeA.appendChild(navSpanA);
-
-let navLiOne = document.createElement("li");
-navLiOne.className = "nav-item";
-
-let navLiOneA = document.createElement("a");
-navLiOneA.className = "nav-link";
-navLiOneA.href = "#";
-navLiOneA.innerText = "panier";
-
-navLiOne.appendChild(navLiOneA);
-
-navbarUl.appendChild(navLiHome);
-navbarUl.appendChild(navLiOne);
-
-document.getElementById("navbarResponsive").appendChild(navbarUl);
-// navbarUl.appendChild(navLiHome);
-// navbarUl.appendChild(navLiOne);
-// navbarUl.appendChild(navHomeA);
-
-// navbarList.appendChild(navbarUl);
-
- 
-// headerBloc.appendChild(navbarList);
-
-// document.getElementById("headerBloc").appendChild(navbarList);
-
 
 
 // Requete fetch pour cartes teddy 
@@ -91,7 +44,8 @@ function createTeddyCard(teddy){
   cardTitle.appendChild(cardTitleA);
 
   let cardPrice = document.createElement("h5");
-  cardPrice.innerText = teddy.price + " €";
+  let Price = teddy.price/100;
+  cardPrice.innerText = Price + " €";
 
   let cardText = document.createElement("p");
   cardText.className = "card-text";
