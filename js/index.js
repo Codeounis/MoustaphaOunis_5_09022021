@@ -1,29 +1,6 @@
 
 // Mise en place Header
 
-// let headerBloc = document.createElement("div");
-// headerBloc.className = "container";
-
-// let headerA = document.createElement("a");
-// headerA.className = "navbar-brand";
-// headerA.href = './index.html';
-
-// let headerButton = document.createElement("button")
-// headerButton.className = "navbar-toggle";
-// headerButton.type = "button";
-// headerButton.datatoggle = "collapse";
-// headerButton.formTarget = "#navbarResponsive"; 
-
-// let headerSpan = document.createElement("span");
-// headerSpan.className = "navbar-toggle-icon";
-
-// headerButton.appendChild(headerSpan);
-// headerBloc.appendChild(headerA);
-// headerBloc.appendChild(headerButton);
-
-// let navbarList = document.createElement("div")
-// navbarList.className = "collapse navbar-collapse";
-// navbarList.id = "navbarResponsive";
 
 let navbarUl = document.createElement("ul");
 navbarUl.className = "navbar-nav ml-auto";
