@@ -6,9 +6,12 @@
 fetch("http://localhost:3000/api/teddies").then(function(response){
   return response.json();
 }).then(function (data) {
-  // console.log(data);
-  for (let index = 0; index < data.length; index++) {
-    let teddy = data[index];
+  console.log(data);
+  for (let index of data){ 
+    // console.log(index);
+  // for (let index = 0; index < data.length; index++) {   // voir pour idex = I
+    // let teddy = data[index];
+    let teddy = index;
     createTeddyCard(teddy);
     // console.log(teddy);
   }
@@ -17,7 +20,7 @@ fetch("http://localhost:3000/api/teddies").then(function(response){
 // fonction pour création des cartes teddy 
 
 function createTeddyCard(teddy){
-  console.log(teddy)
+  // console.log(teddy)
   let cardBlock = document.createElement("div");
   cardBlock.className = "col-lg-4 col-md-6 mb-4";
   let card = document.createElement("div");
@@ -27,7 +30,7 @@ function createTeddyCard(teddy){
   a.href = "./product.html?id="+teddy._id;
 
   let img = document.createElement("img");
-  img.className = "card-img-top";
+  img.className = "card-img-top imgsize";
   img.src = teddy.imageUrl;
   img.alt = "peliche teddy de chez Orinoco";
   a.appendChild(img);
@@ -63,7 +66,7 @@ function createTeddyCard(teddy){
   card.appendChild(cardFooter);
 
   cardBlock.appendChild(card);
-  document.getElementById("row").appendChild(cardBlock);
+  document.getElementById("rowProduct").appendChild(cardBlock);
 }
 
 
