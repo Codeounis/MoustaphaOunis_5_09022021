@@ -32,7 +32,7 @@ function createTeddyCard(teddy){
   let img = document.createElement("img");
   img.className = "card-img-top imgsize";
   img.src = teddy.imageUrl;
-  img.alt = "peliche teddy de chez Orinoco";
+  img.alt = "peluche teddy de chez Orinoco";
   a.appendChild(img);
 
   let cardBody = document.createElement("div");

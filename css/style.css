@@ -7,6 +7,28 @@ body {
   }
 
   .imgsize{
-      height: 200px;
+      height: 250px;
       object-fit:cover ;
+  }
+
+  .orgaPanier{
+      display: flex;
+      flex-direction: row;
+      border: solid 2px;
+      width: 60%;
+  }
+
+  .itemPanier{
+      display: flex;
+      height: 50px;
+      width: 50%;
+  }
+
+  .imgTeddy{
+      height: 50px;
+      width: 50px;
+  }
+
+  .priceTeddy{
+      width: 100px;
   }

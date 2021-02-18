@@ -49,6 +49,14 @@ function createTeddyInfos(teddy){
 
   // let teddyColors = document.createElement ("span");
   // teddyColors.innerHTML= "<b>COLORS: </b>" + teddy.colors.join(", ");
+  let teddyBuy = document.createElement("button");
+  teddyBuy.innerText = "achetez";
+  teddyBuy.onclick = function(){
+    let teddyBuyJson = JSON.stringify(teddy);
+    localStorage.setItem("Teddy",teddyBuyJson);
+    console.log(teddy);
+    console.log("j'ai la peluche")
+  }
 
   teddyBody.appendChild(teddyTitle);
   teddyBody.appendChild(teddyPrice);
@@ -59,5 +67,10 @@ function createTeddyInfos(teddy){
   teddyBlock.appendChild(teddyBody);
 
   document.getElementById("item").appendChild(teddyBlock);
-
+  document.getElementById("item").appendChild(teddyBuy)
 }
+
+
+console.log(id);
+
+
