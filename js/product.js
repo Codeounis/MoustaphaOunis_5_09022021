@@ -22,6 +22,8 @@ fetch("http://localhost:3000/api/teddies/"+id).then(function (response) {
 //   document.body.appendChild(teddyBlock);
 // }
 
+
+
 function createTeddyInfos(teddy){
   console.log(teddy);
   let teddyBlock = document.createElement("div");
@@ -47,15 +49,73 @@ function createTeddyInfos(teddy){
   teddyDescription.className = "card-text";
   teddyDescription.innerText = teddy.description;
 
-  // let teddyColors = document.createElement ("span");
-  // teddyColors.innerHTML= "<b>COLORS: </b>" + teddy.colors.join(", ");
+  let teddyColorsSelect = document.createElement ("select");
+  for (let index = 0; index < teddy.colors.length; index++) {
+    let teddyColorsOption = document.createElement("option");
+    teddyColorsOption.value = teddy.colors[index];
+    teddyColorsOption.innerText = teddy.colors[index];
+    teddyColorsSelect.appendChild(teddyColorsOption);
+  }
+  let teddyBuyBar = document.createElement('div');
+  let TeddyBuyRecap = document.createElement("div");
+  let teddyMax = 10;
+  let teddyBuyNumber = 1;
+  // TeddyBuyRecap.innerHTML = teddyBuyTotal
+
+  
+  teddyBuyBar.appendChild(teddyColorsSelect);
+
+  teddyBuyBar.appendChild(TeddyBuyRecap);
+  
+ 
+
+
+  //  Gestion du local storage
+
+  
+// RECUPERER LOCALSTORAGE
+// VERIFIER SI IL EXISTE
+// SI IL EXISTE
+//   ALORS RECUPERER LE CONTENU  ET  LE TRANSFORMER EN JSON
+//   SI L'ID ET LA COULEUR DE LA PELUCHE EST PRESENT DANS LE JSON
+//     ALORS AJOUTER +1 EN QUANTITE  SUR L'ID CONCERNE
+//   SINON AJOUTER UN OBJET AVEC L'ID ET LA COULEUR CONCERNE ET LA QUANTITE 1
+// SINON CREER UN ARRAY AVEC DEDANS UN OBJET AVEC L'ID ET LA COULEUR CONCERNE ET LA QUANTITE 1
+
+  
   let teddyBuy = document.createElement("button");
   teddyBuy.innerText = "achetez";
   teddyBuy.onclick = function(){
-    let teddyBuyJson = JSON.stringify(teddy);
-    localStorage.setItem("Teddy",teddyBuyJson);
-    console.log(teddy);
-    console.log("j'ai la peluche")
+    let idProduit=teddy._id;
+    let colorProduit = teddyColorsSelect.value; 
+    let ls = localStorage.getItem("listePanier");
+    let lsJSON;
+    if(ls != undefined){
+      console.log("Local Storage Exist");
+      lsJSON = JSON.parse(ls);
+      console.log(lsJSON);
+      let indexProduit;
+      lsJSON.map((produit,index) =>{
+        if(produit.id === idProduit && produit.color === colorProduit){
+          indexProduit = index;
+        }
+        if(indexProduit != undefined){
+          console.log("Produit trouvé")
+          lsJSON[indexProduit].quantity++;
+        }else{
+          console.log("Produit non trouvé")
+          let produit = {id: idProduit,color:colorProduit,quantity:1};
+          lsJSON.push(produit);
+        }
+      })
+    }
+    else{
+      console.log("Local Storage Existe Pas")
+      lsJSON = [{id:idProduit,color:colorProduit,quantity:1}];
+    }
+    console.log(lsJSON)
+    let lsString = JSON.stringify(lsJSON);
+    localStorage.setItem("listePanier",lsString);
   }
 
   teddyBody.appendChild(teddyTitle);
@@ -67,10 +127,17 @@ function createTeddyInfos(teddy){
   teddyBlock.appendChild(teddyBody);
 
   document.getElementById("item").appendChild(teddyBlock);
-  document.getElementById("item").appendChild(teddyBuy)
+  document.getElementById("item").appendChild(teddyBuy);
+  document.getElementById("item").appendChild(teddyBuyBar);
 }
 
 
 console.log(id);
 
 
+
+
+
+// If(stockage == vide) { setItem pour créer le storage }
+//  elseif (stockage.id == produit.id) {  quantité ++) } 
+// else(stockage.id != produit.id) { push } et enfin setItem
