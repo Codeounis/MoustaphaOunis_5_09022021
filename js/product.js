@@ -96,18 +96,18 @@ function createTeddyInfos(teddy){
       console.log(lsJSON);
       let indexProduit;
       lsJSON.map((produit,index) =>{
-        if(produit.id === idProduit && produit.color === colorProduit){
+        if(produit.id === idProduit && produit.color === colorProduit ){
           indexProduit = index;
-        }
-        if(indexProduit != undefined){
-          console.log("Produit trouvé")
-          lsJSON[indexProduit].quantity++;
-        }else{
-          console.log("Produit non trouvé")
-          let produit = {id: idProduit,color:colorProduit,quantity:1};
-          lsJSON.push(produit);
-        }
+        } 
       })
+      if(indexProduit != undefined){
+        console.log("Produit trouvé")
+        lsJSON[indexProduit].quantity++;
+      }else{
+        console.log("Produit non trouvé")
+        let produit = {id: idProduit,color:colorProduit,quantity:1};
+        lsJSON.push(produit);
+      }
     }
     else{
       console.log("Local Storage Existe Pas")
@@ -132,7 +132,7 @@ function createTeddyInfos(teddy){
 }
 
 
-console.log(id);
+
 
 
 
