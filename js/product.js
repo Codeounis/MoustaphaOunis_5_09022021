@@ -11,17 +11,6 @@ fetch("http://localhost:3000/api/teddies/"+id).then(function (response) {
   createTeddyInfos(teddy);
 })
 
-// function createTeddyInfos(){
-//   let teddyBlock = document.createElement("div");
-//   let teddyBuyButton = document.createElement("button");
-//   teddyBuyButton.innerText = "Achetez moi"
-//   teddyBuyButton.onclick = function(){
-//     console.log("j'ai acheté l'id:"+ id);
-//   }
-//   teddyBlock.appendChild(teddyBuyButton);
-//   document.body.appendChild(teddyBlock);
-// }
-
 
 
 function createTeddyInfos(teddy){
@@ -87,6 +76,8 @@ function createTeddyInfos(teddy){
   teddyBuy.innerText = "achetez";
   teddyBuy.onclick = function(){
     let idProduit=teddy._id;
+    let priceProduit = teddy.price;
+    console.log(priceProduit);
     let colorProduit = teddyColorsSelect.value; 
     let ls = localStorage.getItem("listePanier");
     let lsJSON;
@@ -105,13 +96,13 @@ function createTeddyInfos(teddy){
         lsJSON[indexProduit].quantity++;
       }else{
         console.log("Produit non trouvé")
-        let produit = {id: idProduit,color:colorProduit,quantity:1};
+        let produit = {id: idProduit,color:colorProduit,quantity:1,price:priceProduit};
         lsJSON.push(produit);
       }
     }
     else{
       console.log("Local Storage Existe Pas")
-      lsJSON = [{id:idProduit,color:colorProduit,quantity:1}];
+      lsJSON = [{id:idProduit,color:colorProduit,quantity:1,price:priceProduit}];
     }
     console.log(lsJSON)
     let lsString = JSON.stringify(lsJSON);
