@@ -76,8 +76,6 @@ function createTeddyInfos(teddy){
   teddyBuy.innerText = "achetez";
   teddyBuy.onclick = function(){
     let idProduit=teddy._id;
-    let priceProduit = teddy.price;
-    console.log(priceProduit);
     let colorProduit = teddyColorsSelect.value; 
     let ls = localStorage.getItem("listePanier");
     let lsJSON;
@@ -96,13 +94,13 @@ function createTeddyInfos(teddy){
         lsJSON[indexProduit].quantity++;
       }else{
         console.log("Produit non trouvé")
-        let produit = {id: idProduit,color:colorProduit,quantity:1,price:priceProduit};
+        let produit = {id: idProduit,color:colorProduit,quantity:1};
         lsJSON.push(produit);
       }
     }
     else{
       console.log("Local Storage Existe Pas")
-      lsJSON = [{id:idProduit,color:colorProduit,quantity:1,price:priceProduit}];
+      lsJSON = [{id:idProduit,color:colorProduit,quantity:1}];
     }
     console.log(lsJSON)
     let lsString = JSON.stringify(lsJSON);
