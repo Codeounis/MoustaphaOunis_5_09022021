@@ -29,6 +29,8 @@ if (teddyPanier != undefined) {
             leTableauquejeveuxalafin.map((teddy, indexfinal) => {
                 if (teddy.id === teddycomplet._id) {
                     indexduteddydansletableauquejeveuxalafin = indexfinal;
+                    // product.push(teddypascomplet.id);
+                    // console.log(product);
                 }
             })
             if (indexduteddydansletableauquejeveuxalafin != undefined) {
@@ -45,11 +47,6 @@ if (teddyPanier != undefined) {
                     console.log(teddy);
                     let teddyLigneAchat = document.createElement('div');
                     let teddyLigneImg = document.createElement('img');
-                    // let teddySupprimer = document.createElement('button');
-                    // teddySupprimer.innerText = "Supprimer element";
-                    // teddySupprimer.addEventListener('click',supprimerElement(teddy.id));
-                    // teddyLigneAchat.appendChild(teddySupprimer);
-                    // teddySupprimer.addEventListener('click',supprimerElement(teddy.id));
                     teddyLigneImg.className = "imgTeddy";
                     teddyLigneImg.src = teddy.image;
                     let teddyName = document.createElement('p');
@@ -59,7 +56,7 @@ if (teddyPanier != undefined) {
                     let teddyPriceTotal = document.createElement('p');
                     teddyPriceTotal.innerText = "qty final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
                     prixTotal += teddy.price * teddy.quantity;
-                    localStorage.setItem('prixTotal',prixTotal)
+                    localStorage.setItem('prixTotal',prixTotal);
                     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
                     // console.log(prixTotal); // test prix 
                     teddyLigneAchat.appendChild(teddyLigneImg);
@@ -76,24 +73,7 @@ if (teddyPanier != undefined) {
     console.log("Votre panier est vide");
 }
 
-// let teddySupprimer = document.createElement('button');
-// teddySupprimer.onclick = function(){
-//     localStorage.clear();
-//     window.location.reload();
-// }
-// document.getElementById('panier').appendChild(teddySupprimer);
-// // teddySupprimer.onclick = resetTableau();
 
-// // function resetTableau(){
-// //     localStorage.clear();
-// //     window.location.reload();
-// // }
-
-// function supprimerElement(cle){
-//     localStorage.removeItem(cle);
-//     console.log(localStorage);
-//     // window.location.reload();
-// }
 
 
 // test formulaire
@@ -101,10 +81,23 @@ if (teddyPanier != undefined) {
 // console.log(leTableauquejeveuxalafin)
 // localStorage.setItem('prixTotal',prixTotal)
 console.log(localStorage)
-console.log(teddyPanier)
+// console.log(Montableaulocalstorage)
+console.log(teddyPanier);
+console.log(typeof teddyPanier);
+
+let teddyPanierJson= JSON.parse(teddyPanier);
+console.log(teddyPanierJson);
+
+let products =[];
+
+products = teddyPanierJson.map(item=>{ return item.id});
+
+console.log(products);
+console.log(typeof products)
 
 
-// console.log(teddyPriceTotal); // test prix
+
+
 
 let envoiFormulaire = document.getElementById("envoiFormulaire");
 
@@ -121,7 +114,6 @@ envoiFormulaire.addEventListener('click', function (event) {
       'email': document.getElementById("email").value
     };
 
-    // let products = teddySommeTotal;
 
     let formulaireClient = JSON.stringify({
       contact,
@@ -144,7 +136,7 @@ envoiFormulaire.addEventListener('click', function (event) {
     })
     .then(function (r) {
       localStorage.setItem("contact", JSON.stringify(r.contact));
-      // window.location.assign("confirmation.html?orderId=" + r.orderId)
+      window.location.assign("confirmation.html?orderId=" + r.orderId)
       console.log(localStorage)
     })
     .catch(function (err) {
@@ -152,3 +144,4 @@ envoiFormulaire.addEventListener('click', function (event) {
     })
   }
 });
+
