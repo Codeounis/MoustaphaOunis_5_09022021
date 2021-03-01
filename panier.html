@@ -42,6 +42,46 @@
     </div>
   </section>
 
+  <section>
+    <form action="#" method="POST" id="form">
+      <div>
+        <input type="radio" id="Mr" name="drone" value="Mr" checked>
+        <label for="choix">Mr</label>
+  
+        <input type="radio" id="Mme" name="drone" value="Mme">
+        <label for="choix">Mme</label>
+      </div>
+  
+      <div>
+        <label for="name">Nom *:</label><br>
+        <input type="text" id="nom" name="nom" required="required" placeholder="Leo" />
+      </div>
+  
+      <div>
+        <label for="name">Prenom *:</label><br>
+        <input type="text" id="prenom" name="prenom" required="required" placeholder="Martin" />
+      </div>
+  
+      <div>
+        <label for="name">Adresse *:</label><br>
+        <input type="text" id="adresse" name="adresse" required="required" placeholder="3 rue des cerises" />
+      </div>
+  
+      <div>
+        <label for="text">Ville *:</label><br>
+        <input type="text" id="ville" name="ville" required="required" placeholder=" Nice "
+          pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$" />
+      </div>
+  
+      <div>
+        <label for="mail">E-mail *:</label><br>
+        <input type="email" id="email" name="email" required="required" placeholder="martin@yahoo.fr"
+          pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
+      </div>
+  
+      <input type="submit" value="Commander" id="envoiFormulaire" />
+  </section>
+
   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright © Your Website 2020</p>

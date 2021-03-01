@@ -12,7 +12,7 @@ let prixTotal = 0;
 let teddySommeTotal = document.createElement('div');
     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
     document.getElementById('panier').appendChild(teddySommeTotal);
-    console.log(prixTotal); // test prix 
+     
 
 if (teddyPanier != undefined) {
     let Montableaulocalstorage = JSON.parse(teddyPanier);
@@ -59,6 +59,7 @@ if (teddyPanier != undefined) {
                     let teddyPriceTotal = document.createElement('p');
                     teddyPriceTotal.innerText = "qty final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
                     prixTotal += teddy.price * teddy.quantity;
+                    localStorage.setItem('prixTotal',prixTotal)
                     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
                     // console.log(prixTotal); // test prix 
                     teddyLigneAchat.appendChild(teddyLigneImg);
@@ -93,3 +94,61 @@ if (teddyPanier != undefined) {
 //     console.log(localStorage);
 //     // window.location.reload();
 // }
+
+
+// test formulaire
+
+// console.log(leTableauquejeveuxalafin)
+// localStorage.setItem('prixTotal',prixTotal)
+console.log(localStorage)
+console.log(teddyPanier)
+
+
+// console.log(teddyPriceTotal); // test prix
+
+let envoiFormulaire = document.getElementById("envoiFormulaire");
+
+envoiFormulaire.addEventListener('click', function (event) {
+  let form = document.getElementById("form");
+  event.preventDefault();
+
+  if (form.reportValidity() == true) {
+    let contact = {
+      'firstName': document.getElementById("nom").value,
+      'lastName': document.getElementById("prenom").value,
+      'address': document.getElementById("adresse").value,
+      'city': document.getElementById("ville").value,
+      'email': document.getElementById("email").value
+    };
+
+    // let products = teddySommeTotal;
+
+    let formulaireClient = JSON.stringify({
+      contact,
+      products,
+    });
+
+    console.log(formulaireClient)
+
+    // envoie des donnees 
+    fetch('http://localhost:3000/api/teddies/order', {
+      method: 'POST',
+      headers: {
+        'content-type': "application/json"
+      },
+      mode: "cors",
+      body: formulaireClient
+    })
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (r) {
+      localStorage.setItem("contact", JSON.stringify(r.contact));
+      // window.location.assign("confirmation.html?orderId=" + r.orderId)
+      console.log(localStorage)
+    })
+    .catch(function (err) {
+      console.log('problème API');
+    })
+  }
+});

@@ -56,7 +56,6 @@ function createTeddyInfos(teddy){
 
   teddyBuyBar.appendChild(TeddyBuyRecap);
   
- 
 
 
   //  Gestion du local storage
