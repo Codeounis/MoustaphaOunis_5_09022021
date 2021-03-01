@@ -1,6 +1,6 @@
-let paramsUrl = new URL(window.location).searchParams;
+const paramsUrl = new URL(window.location).searchParams;
+const orderId = paramsUrl.get("orderId");
 
-let orderId = paramsUrl.get("orderId");
 console.log(localStorage);
 
 //RECUPERATION DES DONNEES CONTACT

@@ -71,6 +71,11 @@ if (teddyPanier != undefined) {
     })
 } else {
     console.log("Votre panier est vide");
+    let errorResponse = document.createElement("p") ;
+    errorResponse.innerText = "Veuiller remplir votre panier pour commander";
+    errorResponse.className = "reponsePanierVide";
+    panier.className = "noFormulaire";
+    document.getElementById("panierVide").appendChild(errorResponse);
 }
 
 
@@ -90,8 +95,9 @@ console.log(teddyPanierJson);
 
 let products =[];
 
+if(teddyPanierJson != undefined){ 
 products = teddyPanierJson.map(item=>{ return item.id});
-
+}
 console.log(products);
 console.log(typeof products)
 
@@ -105,7 +111,7 @@ envoiFormulaire.addEventListener('click', function (event) {
   let form = document.getElementById("form");
   event.preventDefault();
 
-  if (form.reportValidity() == true) {
+  if (form.reportValidity() == true && teddyPanierJson != null) {
     let contact = {
       'firstName': document.getElementById("nom").value,
       'lastName': document.getElementById("prenom").value,
@@ -122,7 +128,7 @@ envoiFormulaire.addEventListener('click', function (event) {
 
     console.log(formulaireClient)
 
-    // envoie des donnees 
+    
     fetch('http://localhost:3000/api/teddies/order', {
       method: 'POST',
       headers: {
@@ -143,5 +149,10 @@ envoiFormulaire.addEventListener('click', function (event) {
       console.log('problème API');
     })
   }
+  // else{
+  //   let errorResponse = document.createElement("p") ;
+  //   errorResponse.innerText = "Veuiller remplir votre panier pour commander";
+  //   document.getElementById("panierVide").appendChild(errorResponse);
+  // }
 });
 

@@ -32,3 +32,21 @@ body {
   .priceTeddy{
       width: 100px;
   }
+
+  .reponsePanierVide{
+      position: fixed;
+      z-index: 1;
+      background-color: blueviolet;
+      color: black;
+      height: 100vh;
+      width:100vw;
+      opacity: 1;
+      display: flex;
+        justify-content: center;
+        align-items: center;
+  }
+
+  .noFormulaire{
+      display: none;
+  }
+
