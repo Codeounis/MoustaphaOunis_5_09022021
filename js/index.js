@@ -1,16 +1,21 @@
 
+let totalPanier = document.createElement("i");
+document.getElementById("numberProduct").appendChild(totalPanier);
+if(localStorage.length > 0){
+  totalPanier.className = "fas fa-exclamation";
+  }
 
 
 // Requete fetch pour cartes teddy 
 
 fetch("http://localhost:3000/api/teddies").then(function(response){
   return response.json();
-}).then(function (data) {
-  console.log(data);
-  for (let index of data){ 
+}).then(function (teddyApi) {
+  console.log(teddyApi);
+  for (let index of teddyApi){ 
     // console.log(index);
-  // for (let index = 0; index < data.length; index++) {   // voir pour idex = I
-    // let teddy = data[index];
+  // for (let index = 0; index < teddyApi.length; index++) {   // voir pour idex = I
+    // let teddy = teddyApi[index];
     let teddy = index;
     createTeddyCard(teddy);
     // console.log(teddy);

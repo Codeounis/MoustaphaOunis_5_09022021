@@ -1,49 +1,50 @@
 
 
-
+let totalPanier = document.createElement("i");
+document.getElementById("numberProduct").appendChild(totalPanier);
 
 
 //  Récupération du Local storage
 
 
 
-let teddyPanier = localStorage.getItem("listePanier");   
+let teddyPanierStorage = localStorage.getItem("listePanier");   
 let prixTotal = 0;
+let teddyPanierJson;
 let teddySommeTotal = document.createElement('div');
     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
     document.getElementById('panier').appendChild(teddySommeTotal);
      
 
-if (teddyPanier != undefined) {
-    let Montableaulocalstorage = JSON.parse(teddyPanier);
+if (teddyPanierStorage != undefined) {
+    teddyPanierJson = JSON.parse(teddyPanierStorage);
     console.log("votre panier est rempli")
-    console.log(Montableaulocalstorage);
-    let leTableauquejeveuxalafin = [];
+    console.log(teddyPanierJson);
+    let teddyPanierTableau = [];
 
-    Montableaulocalstorage.map((teddypascomplet, index) => {
-        fetch("http://localhost:3000/api/teddies/" + teddypascomplet.id).then(function (response) {
+    teddyPanierJson.map((teddyStorage, index) => {
+        fetch("http://localhost:3000/api/teddies/" + teddyStorage.id).then(function (response) {
             return response.json();
-        }).then(function (teddycomplet) {
-            console.log(teddycomplet);
-            let indexduteddydansletableauquejeveuxalafin;
-            leTableauquejeveuxalafin.map((teddy, indexfinal) => {
-                if (teddy.id === teddycomplet._id) {
-                    indexduteddydansletableauquejeveuxalafin = indexfinal;
-                    // product.push(teddypascomplet.id);
-                    // console.log(product);
+        }).then(function (teddyApi) {
+            console.log(teddyApi);
+            let indexTeddyPanierTableau;
+            teddyPanierTableau.map((teddy, indexfinal) => {
+                if (teddy.id === teddyApi._id) {
+                  indexTeddyPanierTableau = indexfinal;
+                  console.log(teddyPanierTableau);
                 }
             })
-            if (indexduteddydansletableauquejeveuxalafin != undefined) {
+            if ( indexTeddyPanierTableau != undefined) {
                 console.log("Produit trouvé");
-                leTableauquejeveuxalafin[indexduteddydansletableauquejeveuxalafin].quantity += teddypascomplet.quantity;
-                leTableauquejeveuxalafin[indexduteddydansletableauquejeveuxalafin].colors.push(" " + teddypascomplet.color + " qty:" + teddypascomplet.quantity);
+                teddyPanierTableau[indexTeddyPanierTableau].quantity += teddyStorage.quantity;
+                teddyPanierTableau[indexTeddyPanierTableau].colors.push(" " + teddyStorage.color + " qty:" + teddyStorage.quantity);
             } else {
                 console.log("Produit non trouvé")
-                let produit = { id: teddycomplet._id, name: teddycomplet.name, colors: [teddypascomplet.color + " qty: " + teddypascomplet.quantity], quantity: teddypascomplet.quantity, price: teddycomplet.price, image: teddycomplet.imageUrl };
-                leTableauquejeveuxalafin.push(produit);
+                let produit = { id: teddyApi._id, name: teddyApi.name, colors: [teddyStorage.color + " qty: " + teddyStorage.quantity], quantity: teddyStorage.quantity, price: teddyApi.price, image: teddyApi.imageUrl };
+                teddyPanierTableau.push(produit);
             }
-            if (index === Montableaulocalstorage.length - 1) {
-                leTableauquejeveuxalafin.map((teddy, indexalafin) => {
+            if (index === teddyPanierJson.length - 1) {
+              teddyPanierTableau.map((teddy, indexTableauFinal) => {
                     console.log(teddy);
                     let teddyLigneAchat = document.createElement('div');
                     let teddyLigneImg = document.createElement('img');
@@ -58,11 +59,9 @@ if (teddyPanier != undefined) {
                     prixTotal += teddy.price * teddy.quantity;
                     localStorage.setItem('prixTotal',prixTotal/100);
                     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
-                    // console.log(prixTotal); // test prix 
                     teddyLigneAchat.appendChild(teddyLigneImg);
                     teddyLigneAchat.appendChild(teddyName);
                     teddyLigneAchat.appendChild(teddyColors);
-                    // teddyLigneAchat.appendChild(teddySupprimer);
                     teddyLigneAchat.appendChild(teddyPriceTotal);
                     document.getElementById('panier').appendChild(teddyLigneAchat);
                 })
@@ -79,16 +78,23 @@ if (teddyPanier != undefined) {
 }
 
 
-
-
+let teddyClear = document.createElement("button");
+teddyClear.innerText = "vider le panier";
+teddyClear.onclick = function(){
+  localStorage.clear();
+  location.reload();
+}
+document.getElementById("videpanier").appendChild(teddyClear);
+// console log a supprimer 
 
 console.log(localStorage)
 
-console.log(teddyPanier);
-console.log(typeof teddyPanier);
+console.log(teddyPanierStorage);
+console.log(typeof teddyPanierStorage);
 
-let teddyPanierJson= JSON.parse(teddyPanier);
 console.log(teddyPanierJson);
+
+//  console log a supprimer
 
 let products =[];
 

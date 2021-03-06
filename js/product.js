@@ -6,13 +6,18 @@
 const paramsUrl = new URL(window.location).searchParams;
 const id = paramsUrl.get("id");
 
+let totalPanier = document.createElement("i");
+document.getElementById("numberProduct").appendChild(totalPanier);
+if(localStorage.length > 0){
+  totalPanier.className = "fas fa-exclamation";
+  }
 
 
 fetch("http://localhost:3000/api/teddies/"+id).then(function (response) {
   return response.json();
-}).then(function (data) {
-  console.log(data);
-  let teddy = data;
+}).then(function (teddyApi) {
+  console.log(teddyApi);
+  let teddy = teddyApi;
   createTeddyInfos(teddy);
 })
 
@@ -75,6 +80,12 @@ function createTeddyInfos(teddy){
 //   SINON AJOUTER UN OBJET AVEC L'ID ET LA COULEUR CONCERNE ET LA QUANTITE 1
 // SINON CREER UN ARRAY AVEC DEDANS UN OBJET AVEC L'ID ET LA COULEUR CONCERNE ET LA QUANTITE 1
 
+
+// let nombreProduitPAnier = 0;
+// let totalPanier = document.createElement("div");
+// totalPanier.innerHTML = nombreProduitPAnier;
+// document.getElementById("numberProduct").appendChild(totalPanier);
+
   
   let teddyBuy = document.createElement("button");
   teddyBuy.innerText = "achetez";
@@ -83,6 +94,7 @@ function createTeddyInfos(teddy){
     let colorProduit = teddyColorsSelect.value; 
     let ls = localStorage.getItem("listePanier");
     let lsJSON;
+    window.alert("Article ajouté au panier");
     if(ls != undefined){
       console.log("Local Storage Exist");
       lsJSON = JSON.parse(ls);
@@ -109,8 +121,10 @@ function createTeddyInfos(teddy){
     console.log(lsJSON)
     let lsString = JSON.stringify(lsJSON);
     localStorage.setItem("listePanier",lsString);
+    if(localStorage.length > 0){
+      totalPanier.className = "fas fa-exclamation";
+      }
   }
-
   teddyBody.appendChild(teddyTitle);
   teddyBody.appendChild(teddyPrice);
   teddyBody.appendChild(teddyDescription);
@@ -123,6 +137,10 @@ function createTeddyInfos(teddy){
   document.getElementById("item").appendChild(teddyBuy);
   document.getElementById("item").appendChild(teddyBuyBar);
 }
+
+
+
+console.log(localStorage)
 
 
 
