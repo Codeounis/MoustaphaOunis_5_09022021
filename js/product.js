@@ -94,12 +94,12 @@ function createTeddyInfos(teddy){
   
   let teddyBuy = document.createElement("button");
   teddyBuy.innerText = "achetez";
+  let teddyAlerte = document.createElement("div");
   teddyBuy.onclick = function(){
     let idProduit=teddy._id;
     let colorProduit = teddyColorsSelect.value; 
     let ls = localStorage.getItem("listePanier");
     let lsJSON;
-    let teddyAlerte = document.createElement("div");
     teddyAlerte.innerHTML += `<div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Article ajouté au panier !</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
