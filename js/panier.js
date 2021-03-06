@@ -56,7 +56,7 @@ if (teddyPanier != undefined) {
                     let teddyPriceTotal = document.createElement('p');
                     teddyPriceTotal.innerText = "qty final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
                     prixTotal += teddy.price * teddy.quantity;
-                    localStorage.setItem('prixTotal',prixTotal);
+                    localStorage.setItem('prixTotal',prixTotal/100);
                     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
                     // console.log(prixTotal); // test prix 
                     teddyLigneAchat.appendChild(teddyLigneImg);
@@ -81,12 +81,9 @@ if (teddyPanier != undefined) {
 
 
 
-// test formulaire
 
-// console.log(leTableauquejeveuxalafin)
-// localStorage.setItem('prixTotal',prixTotal)
 console.log(localStorage)
-// console.log(Montableaulocalstorage)
+
 console.log(teddyPanier);
 console.log(typeof teddyPanier);
 
@@ -111,24 +108,22 @@ envoiFormulaire.addEventListener('click', function (event) {
   let form = document.getElementById("form");
   event.preventDefault();
 
-  if (form.reportValidity() == true && teddyPanierJson != null) {
+  if (form.reportValidity() == true) {
     let contact = {
       'firstName': document.getElementById("nom").value,
       'lastName': document.getElementById("prenom").value,
       'address': document.getElementById("adresse").value,
       'city': document.getElementById("ville").value,
-      'email': document.getElementById("email").value
+      'email': document.getElementById("email").value,
     };
-
 
     let formulaireClient = JSON.stringify({
       contact,
       products,
     });
 
-    console.log(formulaireClient)
+    // console.log(formulaireClient)
 
-    
     fetch('http://localhost:3000/api/teddies/order', {
       method: 'POST',
       headers: {
@@ -149,10 +144,5 @@ envoiFormulaire.addEventListener('click', function (event) {
       console.log('problème API');
     })
   }
-  // else{
-  //   let errorResponse = document.createElement("p") ;
-  //   errorResponse.innerText = "Veuiller remplir votre panier pour commander";
-  //   document.getElementById("panierVide").appendChild(errorResponse);
-  // }
 });
 
