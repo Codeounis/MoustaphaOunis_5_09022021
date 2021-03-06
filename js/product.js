@@ -6,11 +6,16 @@
 const paramsUrl = new URL(window.location).searchParams;
 const id = paramsUrl.get("id");
 
-let totalPanier = document.createElement("i");
-document.getElementById("numberProduct").appendChild(totalPanier);
+let totalPanier = document.createElement("span");
+let totalPanierIcone = document.createElement("i");
+totalPanier.appendChild(totalPanierIcone);
+document.getElementById("lienPanier").appendChild(totalPanier);
 if(localStorage.length > 0){
-  totalPanier.className = "fas fa-exclamation";
+  totalPanierIcone.title="Des articles vous attendent !!";
+  totalPanierIcone.className = "fas fa-exclamation";
   }
+
+
 
 
 fetch("http://localhost:3000/api/teddies/"+id).then(function (response) {
@@ -94,7 +99,18 @@ function createTeddyInfos(teddy){
     let colorProduit = teddyColorsSelect.value; 
     let ls = localStorage.getItem("listePanier");
     let lsJSON;
-    window.alert("Article ajouté au panier");
+    let teddyAlerte = document.createElement("div");
+    teddyAlerte.innerHTML += `<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Article ajouté au panier !</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>`
+    document.getElementById("messageAlert").appendChild(teddyAlerte);
+    if(localStorage.length < 1){
+      alert("Article ajouté au panier")
+      location.reload();
+      }
     if(ls != undefined){
       console.log("Local Storage Exist");
       lsJSON = JSON.parse(ls);
@@ -121,9 +137,6 @@ function createTeddyInfos(teddy){
     console.log(lsJSON)
     let lsString = JSON.stringify(lsJSON);
     localStorage.setItem("listePanier",lsString);
-    if(localStorage.length > 0){
-      totalPanier.className = "fas fa-exclamation";
-      }
   }
   teddyBody.appendChild(teddyTitle);
   teddyBody.appendChild(teddyPrice);

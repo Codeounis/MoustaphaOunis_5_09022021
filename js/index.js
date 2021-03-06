@@ -1,11 +1,14 @@
 
-let totalPanier = document.createElement("i");
-document.getElementById("numberProduct").appendChild(totalPanier);
+let totalPanier = document.createElement("span");
+let totalPanierIcone = document.createElement("i");
+totalPanier.appendChild(totalPanierIcone);
+document.getElementById("lienPanier").appendChild(totalPanier);
 if(localStorage.length > 0){
-  totalPanier.className = "fas fa-exclamation";
+  totalPanierIcone.title="Des articles vous attendent !!";
+  totalPanierIcone.className = "fas fa-exclamation";
   }
 
-
+console.log(localStorage)
 // Requete fetch pour cartes teddy 
 
 fetch("http://localhost:3000/api/teddies").then(function(response){

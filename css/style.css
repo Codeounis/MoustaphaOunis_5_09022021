@@ -42,8 +42,9 @@ body {
       width:100vw;
       opacity: 1;
       display: flex;
-        justify-content: center;
-        align-items: center;
+      justify-content: center;
+      align-items: center;
+      margin-top: -50px;
   }
 
   .noFormulaire{
