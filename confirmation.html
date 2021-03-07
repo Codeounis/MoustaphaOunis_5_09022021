@@ -1,62 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Orinoco</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-<link rel="stylesheet" href="/css/style.css">
-<script defer src="./js/confirmation.js"></script>
-</head>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orinoco</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="./js/confirmation.js"></script>
+  </head>
 
-<body>
+  <body>
 
-  <header>  
-    <nav class="navbar navbar-expand-lg navbar-dark bg-pink fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/index.html"><i class="fas fa-shopping-cart logocolor"></i> Orinoco</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="lienheader fadepink" href="/index.html">Acceuil 
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="lienheader fadepink" id="lienPanier" href="/panier.html">Panier </a>
-            </li>
-          </ul>
+    <!-- MISE EN PLACE HEADER -->
+
+    <header>  
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-pink fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/index.html"><i class="fas fa-shopping-cart logocolor"></i> Orinoco</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="lienheader fadepink" href="/index.html">Acceuil 
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="lienheader fadepink" id="lienPanier" href="/panier.html">Panier </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+      
+    </header>
+    
+  <!-- INTEGRATION DE LA REPONSE SERVEUR-->
+
+  <section>
+
+    <h1>Confirmation</h1>
+
+    <div id="confirmation"  class=" container commandeRecap">
+      <h3>Votre récapitulatif de commande.</h3>
+    </div>
+
+    <img src="/logo_orinoco.PNG" alt="Logo du site Orinoco vente de peluche" class="logo">
+
+  </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="py-5">
+
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Orinoco 2021</p>
       </div>
-    </nav>
-  </header>
-  
-<!-- intégration réponse  -->
-<section>
-  <h1>Confirmation</h1>
+    
+    </footer>
 
-<div id="confirmation"  class=" container commandeRecap">
-  <h3>Votre récapitulatif de commande.</h3>
-</div>
+    <!-- SCRIPT POUR LE CSS-->
 
-<img src="/logo_orinoco.PNG" alt="Logo du site Orinoco vente de peluche" class="logo">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/css/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/49e23ff5b1.js" crossorigin="anonymous"></script>
 
+  </body>
 
-</section>
-
-
-
-<footer class="py-5">
-
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Orinoco 2021</p>
-  </div>
-  
-</footer>
-
-
-</body>
+</html>
