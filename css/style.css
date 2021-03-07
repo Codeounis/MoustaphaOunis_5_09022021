@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Miltonian&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Miltonian&family=Raleway:wght@300&display=swap');
 
 
 
@@ -11,11 +11,11 @@ body {
     padding-top: 56px;
     background-color: #f3e9f1;
   }
+  
 
   header{
       margin-bottom: 50px;
       font-family: 'Miltonian',Arial, Helvetica, sans-serif;
-      /* color: #d9832f!important; */
       font-size: larger;
   }
 
@@ -29,27 +29,47 @@ body {
       margin-bottom: 25px;
   }
 
+  h2,h3{
+      text-align: center;
+      margin-bottom: 10px;
+  }
+
+
   .imgsize{
       height: 250px;
       object-fit:cover ;
   }
 
-  .orgaPanier{
-      /* display: flex; */
-      /* flex-direction: row; */
-      border: solid 2px;
-      width: 60%;
+  #orgaPanier{
+      justify-content: center;
+      padding: 10px 10px 0 10px;
+  }
+  
+  .recapPanier{
+      display: flex;
+      flex-wrap: wrap;
+      background-color: antiquewhite;
+      justify-content: center;
+      border: solid 2px #711966;
+      border-radius: 10px;
+      width: 100%;
   }
 
   .itemPanier{
       display: flex;
-      height: 50px;
-      width: 50%;
+      flex-direction: column;
+      align-items: center;
+      margin: 5px;
+      border: solid 1px #c964e1;
+      border-radius: 5px;
+      background-color: #ffc979;
   }
 
   .imgTeddy{
-      height: 50px;
-      width: 50px;
+      height: 120px;
+      width: 350px;
+      border-radius: 5px;
+      object-fit: cover;
   }
 
   .priceTeddy{
@@ -88,4 +108,52 @@ body {
 
   .logocolor{
     color: #c964e1!important;
+  }
+
+  .align{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+  }
+  
+  .lienheader{
+    display: block;
+    padding: .5rem 1rem;
+  }
+
+  .lienheader:hover{
+      text-decoration: underline,blue;
+  }
+
+  .totalPanier{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      border: solid 2px #d9832f;
+      font-size: 35px;
+      font-family: 'Raleway',Arial, Helvetica, sans-serif;
+      background-color: lightskyblue;
+      margin: 0px 20px;
+      border-radius: 25px;
+  }
+
+  .orgaFormulaire{
+      margin: 10px;
+  }
+
+
+  .formulaire{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px 0px;
+  }
+
+  .caseform{
+      margin-right: 10px;
+      margin-bottom: 10px;
+  }
+
+  .logo{
+      width: 50%;
   }

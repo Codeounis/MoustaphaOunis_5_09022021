@@ -13,7 +13,7 @@ let prixTotal = 0;
 let teddyPanierJson;
 let teddySommeTotal = document.createElement('div');
     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
-    document.getElementById('panier').appendChild(teddySommeTotal);
+    document.getElementById('numberProduct').appendChild(teddySommeTotal);
      
 
 if (teddyPanierStorage != undefined) {
@@ -37,16 +37,17 @@ if (teddyPanierStorage != undefined) {
             if ( indexTeddyPanierTableau != undefined) {
                 console.log("Produit trouvé");
                 teddyPanierTableau[indexTeddyPanierTableau].quantity += teddyStorage.quantity;
-                teddyPanierTableau[indexTeddyPanierTableau].colors.push(" " + teddyStorage.color + " qty:" + teddyStorage.quantity);
+                teddyPanierTableau[indexTeddyPanierTableau].colors.push(" " + teddyStorage.color + " qté:" + teddyStorage.quantity);
             } else {
                 console.log("Produit non trouvé")
-                let produit = { id: teddyApi._id, name: teddyApi.name, colors: [teddyStorage.color + " qty: " + teddyStorage.quantity], quantity: teddyStorage.quantity, price: teddyApi.price, image: teddyApi.imageUrl };
+                let produit = { id: teddyApi._id, name: teddyApi.name, colors: [teddyStorage.color + " qté: " + teddyStorage.quantity], quantity: teddyStorage.quantity, price: teddyApi.price, image: teddyApi.imageUrl };
                 teddyPanierTableau.push(produit);
             }
             if (index === teddyPanierJson.length - 1) {
               teddyPanierTableau.map((teddy, indexTableauFinal) => {
                     console.log(teddy);
                     let teddyLigneAchat = document.createElement('div');
+                    teddyLigneAchat.className = "itemPanier";
                     let teddyLigneImg = document.createElement('img');
                     teddyLigneImg.className = "imgTeddy";
                     teddyLigneImg.src = teddy.image;
@@ -55,7 +56,7 @@ if (teddyPanierStorage != undefined) {
                     let teddyColors = document.createElement('p');
                     teddyColors.innerText = "Couleurs choisis: " + teddy.colors;
                     let teddyPriceTotal = document.createElement('p');
-                    teddyPriceTotal.innerText = "qty final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
+                    teddyPriceTotal.innerText = "qté final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
                     prixTotal += teddy.price * teddy.quantity;
                     localStorage.setItem('prixTotal',prixTotal/100);
                     teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
@@ -71,7 +72,7 @@ if (teddyPanierStorage != undefined) {
 } else {
     console.log("Votre panier est vide");
     let errorResponse = document.createElement("p") ;
-    errorResponse.innerText = "Veuiller remplir votre panier pour commander";
+    errorResponse.innerText = "Veuiller remplir votre panier pour commander.";
     errorResponse.className = "reponsePanierVide";
     panier.className = "noFormulaire";
     document.getElementById("panierVide").appendChild(errorResponse);
@@ -79,6 +80,7 @@ if (teddyPanierStorage != undefined) {
 
 
 let teddyClear = document.createElement("button");
+teddyClear.className ="btn btn-danger";
 teddyClear.innerText = "vider le panier";
 teddyClear.onclick = function(){
   localStorage.clear();

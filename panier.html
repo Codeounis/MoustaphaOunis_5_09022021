@@ -22,12 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link fadepink" href="/index.html">Acceuil
+                  <a class="lienheader fadepink" href="/index.html">Acceuil
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fadepink" id="lienPanier" href="/panier.html">Panier </a>
+                  <a class="lienheader fadepink" id="lienPanier" href="/panier.html">Panier </a>
                 </li>
               </ul>
             </div>
@@ -35,55 +35,61 @@
         </nav>
   </header>
 
-  <div id="numberProduct" class="panier"></div>
+  <!-- Affichage si panier vide -->
   <div id="panierVide"></div>
 
-  <section>
-    <div id="panier" class="orgaPanier">
-      
-    </div>
 
-    <div id="videpanier">
-
+  <section id="orgaPanier">
+    <h2>Détails de votre panier</h2>
+  <div id="videpanier">
+  </div>
+    <div id="panier" class="recapPanier">
     </div>
   </section>
+  <div id="numberProduct" class="totalPanier"></div>
 
-  <section>
-    <form action="#" method="POST" id="form">
-      <div>
-        <input type="radio" id="Mr" name="drone" value="Mr" checked>
-        <label for="choix">Mr</label>
   
-        <input type="radio" id="Mme" name="drone" value="Mme">
-        <label for="choix">Mme</label>
-      </div>
+  <section class="orgaFormulaire">
+    <h4>Formulaire de commande</h4>
+    <div>
+      <input type="radio" id="Mr" name="drone" value="Mr" checked>
+      <label for="Mr">Mr</label>
+
+      
+      <input type="radio" id="Mme" name="drone" value="Mme">
+      <label for="Mme">Mme</label>
+    </div>
+      
+    <form action="#" method="POST" id="form" class="formulaire">
+      
   
-      <div>
-        <label for="name">Nom *:</label><br>
+      <div class="caseform">
+        <label for="nom">Nom *:</label><br>
         <input type="text" id="nom" name="nom" placeholder="Hanna" required>
       </div>
   
-      <div>
-        <label for="name">Prenom *:</label><br>
+      <div class="caseform">
+        <label for="prenom">Prenom *:</label><br>
         <input type="text" id="prenom" name="prenom"  placeholder="Montana" required>
       </div>
   
-      <div>
-        <label for="name">Adresse *:</label><br>
+      <div class="caseform">
+        <label for="adresse">Adresse *:</label><br>
         <input type="text" id="adresse" name="adresse" placeholder="7 rue des pins" required>
       </div>
   
-      <div>
-        <label for="text">Ville *:</label><br>
+      <div class="caseform">
+        <label for="ville">Ville *:</label><br>
         <input type="text" id="ville" name="ville" placeholder="Rennes" required>
       </div>
   
-      <div>
-        <label for="mail">E-mail *:</label><br>
+      <div class="caseform">
+        <label for="email">E-mail *:</label><br>
         <input type="email" id="email" name="email" placeholder="gigi@gmail.com" required>
       </div>
   
-      <input type="submit" value="Commander" id="envoiFormulaire">
+      <input type="submit" value="Commander" id="envoiFormulaire" class="btn btn-primary btn-lg btn-block">
+      </form>
 
   </section>
 

@@ -11,12 +11,12 @@ let prixTotal = JSON.parse(localStorage.getItem("prixTotal"));
 function display (){
     confirmation.innerHTML += `
         <p>
-        Merci  ${contact.firstName } ${contact.lastName} 
+        Merci  ${contact.firstName } ${contact.lastName} pour votre commande chez Orinoco.
         </p>
         <p>Nous avons bien reçu votre commande N° ${orderId} </br>
         D'un montant de : ${prixTotal} € </br>
         </p>
-        Un email vous sera envoyer à l'adresse : </br> ${contact.email} a l'envoi de votre commande.  
+        Un email vous sera envoyé à l'adresse : </br> ${contact.email} a l'envoi de votre commande.  
     `
 };
 

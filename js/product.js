@@ -12,7 +12,7 @@ totalPanier.appendChild(totalPanierIcone);
 document.getElementById("lienPanier").appendChild(totalPanier);
 if(localStorage.length > 0){
   totalPanierIcone.title="Des articles vous attendent !!";
-  totalPanierIcone.className = "fas fa-exclamation";
+  totalPanierIcone.className = "fas fa-exclamation orange";
   }
 
 
@@ -54,6 +54,7 @@ function createTeddyInfos(teddy){
   teddyDescription.innerText = teddy.description;
 
   let teddyColorsSelect = document.createElement ("select");
+  teddyColorsSelect.className = "form-control";
   for (let index = 0; index < teddy.colors.length; index++) {
     let teddyColorsOption = document.createElement("option");
     teddyColorsOption.value = teddy.colors[index];
@@ -62,16 +63,14 @@ function createTeddyInfos(teddy){
   }
   let teddyBuyBar = document.createElement('div');
   let TeddyBuyRecap = document.createElement("div");
-  let teddyMax = 10;
-  let teddyBuyNumber = 1;
   // TeddyBuyRecap.innerHTML = teddyBuyTotal
 
   
-  teddyBuyBar.appendChild(teddyColorsSelect);
+  
 
   teddyBuyBar.appendChild(TeddyBuyRecap);
   
-
+  teddyBuyBar.appendChild(teddyColorsSelect);
 
   //  Gestion du local storage
 
@@ -93,7 +92,8 @@ function createTeddyInfos(teddy){
 
   
   let teddyBuy = document.createElement("button");
-  teddyBuy.innerText = "achetez";
+  teddyBuy.innerText = "Ajoutez au panier";
+  teddyBuy.className = "btn btn-primary btn-lg btn-block";
   let teddyAlerte = document.createElement("div");
   teddyBuy.onclick = function(){
     let idProduit=teddy._id;
@@ -101,7 +101,7 @@ function createTeddyInfos(teddy){
     let ls = localStorage.getItem("listePanier");
     let lsJSON;
     teddyAlerte.innerHTML += `<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Article ajouté au panier !</strong>
+    <strong>Votre ${teddyTitle.innerText} de couleur ${colorProduit } a été ajoutez au panier!</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -147,8 +147,8 @@ function createTeddyInfos(teddy){
   teddyBlock.appendChild(teddyBody);
 
   document.getElementById("item").appendChild(teddyBlock);
-  document.getElementById("item").appendChild(teddyBuy);
   document.getElementById("item").appendChild(teddyBuyBar);
+  document.getElementById("item").appendChild(teddyBuy);
 }
 
 
