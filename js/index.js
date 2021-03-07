@@ -5,7 +5,7 @@ totalPanier.appendChild(totalPanierIcone);
 document.getElementById("lienPanier").appendChild(totalPanier);
 if(localStorage.length > 0){
   totalPanierIcone.title="Des articles vous attendent !!";
-  totalPanierIcone.className = "fas fa-exclamation";
+  totalPanierIcone.className = "fas fa-exclamation orange";
   }
 
 console.log(localStorage)

@@ -1,9 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Miltonian&display=swap');
+
+
+
+
+
+
+
+
 body {
     padding-top: 56px;
+    background-color: #f3e9f1;
   }
 
   header{
       margin-bottom: 50px;
+      font-family: 'Miltonian',Arial, Helvetica, sans-serif;
+      /* color: #d9832f!important; */
+      font-size: larger;
+  }
+
+  footer{
+     background-color: #711966!important;;
+  }
+
+
+  h1{
+      text-align: center;
+      margin-bottom: 25px;
   }
 
   .imgsize{
@@ -51,3 +74,18 @@ body {
       display: none;
   }
 
+  .bg-pink{
+      background-color: #8927a7!important;
+  }
+
+  .orange{
+    color: #d9832f!important;
+  }
+
+  .fadepink{
+    color: #f3e9f1!important;
+  }
+
+  .logocolor{
+    color: #c964e1!important;
+  }

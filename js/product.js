@@ -42,7 +42,7 @@ function createTeddyInfos(teddy){
   teddyBody.className = "card-body";
 
   let teddyTitle = document.createElement("h3");
-  teddyTitle.className = "card-title";
+  teddyTitle.className = "card-title orange";
   teddyTitle.innerText = teddy.name ; 
   
   let teddyPrice = document.createElement("h4");
