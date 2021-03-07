@@ -1,81 +1,88 @@
+// LOGIQUE POUR CREATION DE L'ICONE SIGNALANT DES ARTICLES DANS LE PANIER
 
-let totalPanier = document.createElement("span");
-let totalPanierIcone = document.createElement("i");
-totalPanier.appendChild(totalPanierIcone);
-document.getElementById("lienPanier").appendChild(totalPanier);
-if(localStorage.length > 0){
-  totalPanierIcone.title="Des articles vous attendent !!";
-  totalPanierIcone.className = "fas fa-exclamation orange";
-  }
+let Panier = document.createElement("span");
+let PanierIcone = document.createElement("i");
+Panier.appendChild(PanierIcone);
+document.getElementById("lienPanier").appendChild(Panier);
+if (localStorage.length > 0) {
+  PanierIcone.title = "Des articles vous attendent !!";
+  PanierIcone.className = "fas fa-exclamation orange";
+}
 
-console.log(localStorage)
-// Requete fetch pour cartes teddy 
+//  REQUETE FETCH POUR RECUPERER LES INFOS DE L'API
 
-fetch("http://localhost:3000/api/teddies").then(function(response){
-  return response.json();
-}).then(function (teddyApi) {
-  console.log(teddyApi);
-  for (let index of teddyApi){ 
-    // console.log(index);
-  // for (let index = 0; index < teddyApi.length; index++) {   // voir pour idex = I
-    // let teddy = teddyApi[index];
-    let teddy = index;
-    createTeddyCard(teddy);
-    // console.log(teddy);
-  }
-})
+fetch("http://localhost:3000/api/teddies")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (teddyApi) {
+    // BOUCLE POUR GENERER LES PRODUITS VIA UNE FONCTION AVEC LES INFOS DE L'API
+    for (let index of teddyApi) {
+      let teddy = index;
+      createTeddyCard(teddy);
+    }
+  });
 
-// fonction pour création des cartes teddy 
+// FONCTION POUR CREER UNE TEDDYCARD ET L'AFFICHER EN HTML
 
-function createTeddyCard(teddy){
-  // console.log(teddy)
+function createTeddyCard(teddy) {
+  // CONTAINER DES PRODUITS
   let cardBlock = document.createElement("div");
   cardBlock.className = "col-lg-4 col-md-6 mb-4";
   let card = document.createElement("div");
   card.className = "card h-100";
 
+  //  LIEN DE LA CARTE VERS PAGE PRODUIT
   let a = document.createElement("a");
-  a.href = "./product.html?id="+teddy._id;
+  a.href = "./product.html?id=" + teddy._id;
 
+  // IMAGE DU PRODUIT
   let img = document.createElement("img");
   img.className = "card-img-top imgsize";
   img.src = teddy.imageUrl;
   img.alt = "peluche teddy de chez Orinoco";
   a.appendChild(img);
 
+  // DESCRIPTION PRODUIT : CONTAINER,
   let cardBody = document.createElement("div");
   cardBody.className = "card-body";
 
+  // TITRE
   let cardTitle = document.createElement("h4");
   cardTitle.className = "card-title";
 
+  // LIEN VERS PAGE PRODUIT
   let cardTitleA = document.createElement("a");
-  cardTitleA.href =  "./product.html?id="+teddy._id;
+  cardTitleA.href = "./product.html?id=" + teddy._id;
   cardTitleA.innerText = teddy.name;
   cardTitle.appendChild(cardTitleA);
 
+  // PRIX
   let cardPrice = document.createElement("h5");
-  let Price = teddy.price/100;
+  let Price = teddy.price / 100;
   cardPrice.innerText = Price + " €";
 
+  // DESCRIPTION
   let cardText = document.createElement("p");
   cardText.className = "card-text";
   cardText.innerText = teddy.description;
-  cardBody.appendChild(cardTitle);
-  cardBody.appendChild(cardPrice);
-  cardBody.appendChild(cardText);
 
+  // COULEURS EXISTANTE
   let cardFooter = document.createElement("div");
   cardFooter.className = "card-footer";
   cardFooter.innerHTML = "<b>COLORS: </b>" + teddy.colors.join(", ");
+
+  // INTEGRATION DES BLOCS ENTRE EUX
+  cardBody.appendChild(cardTitle);
+  cardBody.appendChild(cardPrice);
+  cardBody.appendChild(cardText);
 
   card.appendChild(a);
   card.appendChild(cardBody);
   card.appendChild(cardFooter);
 
   cardBlock.appendChild(card);
+
+  // INTEGRATION HTML
   document.getElementById("rowProduct").appendChild(cardBlock);
 }
-
-
-

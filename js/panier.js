@@ -17,57 +17,56 @@ let teddySommeTotal = document.createElement('div');
      
 
 if (teddyPanierStorage != undefined) {
-    teddyPanierJson = JSON.parse(teddyPanierStorage);
-    console.log("votre panier est rempli")
-    console.log(teddyPanierJson);
-    let teddyPanierTableau = [];
-
-    teddyPanierJson.map((teddyStorage, index) => {
-        fetch("http://localhost:3000/api/teddies/" + teddyStorage.id).then(function (response) {
-            return response.json();
-        }).then(function (teddyApi) {
-            console.log(teddyApi);
-            let indexTeddyPanierTableau;
-            teddyPanierTableau.map((teddy, indexfinal) => {
-                if (teddy.id === teddyApi._id) {
-                  indexTeddyPanierTableau = indexfinal;
-                  console.log(teddyPanierTableau);
-                }
-            })
-            if ( indexTeddyPanierTableau != undefined) {
-                console.log("Produit trouvé");
-                teddyPanierTableau[indexTeddyPanierTableau].quantity += teddyStorage.quantity;
-                teddyPanierTableau[indexTeddyPanierTableau].colors.push(" " + teddyStorage.color + " qté:" + teddyStorage.quantity);
-            } else {
-                console.log("Produit non trouvé")
-                let produit = { id: teddyApi._id, name: teddyApi.name, colors: [teddyStorage.color + " qté: " + teddyStorage.quantity], quantity: teddyStorage.quantity, price: teddyApi.price, image: teddyApi.imageUrl };
-                teddyPanierTableau.push(produit);
-            }
-            if (index === teddyPanierJson.length - 1) {
-              teddyPanierTableau.map((teddy, indexTableauFinal) => {
-                    console.log(teddy);
-                    let teddyLigneAchat = document.createElement('div');
-                    teddyLigneAchat.className = "itemPanier";
-                    let teddyLigneImg = document.createElement('img');
-                    teddyLigneImg.className = "imgTeddy";
-                    teddyLigneImg.src = teddy.image;
-                    let teddyName = document.createElement('p');
-                    teddyName.innerText = teddy.name;
-                    let teddyColors = document.createElement('p');
-                    teddyColors.innerText = "Couleurs choisis: " + teddy.colors;
-                    let teddyPriceTotal = document.createElement('p');
-                    teddyPriceTotal.innerText = "qté final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
-                    prixTotal += teddy.price * teddy.quantity;
-                    localStorage.setItem('prixTotal',prixTotal/100);
-                    teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
-                    teddyLigneAchat.appendChild(teddyLigneImg);
-                    teddyLigneAchat.appendChild(teddyName);
-                    teddyLigneAchat.appendChild(teddyColors);
-                    teddyLigneAchat.appendChild(teddyPriceTotal);
-                    document.getElementById('panier').appendChild(teddyLigneAchat);
-                })
-            }
-        })
+  teddyPanierJson = JSON.parse(teddyPanierStorage);
+  console.log("votre panier est rempli")
+  console.log(teddyPanierJson);
+  let teddyPanierTableau = [];
+  teddyPanierJson.map((teddyStorage, index) => {
+    fetch("http://localhost:3000/api/teddies/" + teddyStorage.id).then(function (response) {
+      return response.json();
+    }).then(function (teddyApi) {
+      console.log(teddyApi);
+      let indexTeddyPanierTableau;
+      teddyPanierTableau.map((teddy, indexfinal) => {
+        if (teddy.id === teddyApi._id) {
+          indexTeddyPanierTableau = indexfinal;
+          console.log(teddyPanierTableau);
+        }
+      })
+      if ( indexTeddyPanierTableau != undefined) {
+        console.log("Produit trouvé");
+        teddyPanierTableau[indexTeddyPanierTableau].quantity += teddyStorage.quantity;
+        teddyPanierTableau[indexTeddyPanierTableau].colors.push(" " + teddyStorage.color + " qté:" + teddyStorage.quantity);
+      } else {
+        console.log("Produit non trouvé")
+        let produit = { id: teddyApi._id, name: teddyApi.name, colors: [teddyStorage.color + " qté: " + teddyStorage.quantity], quantity: teddyStorage.quantity, price: teddyApi.price, image: teddyApi.imageUrl };
+        teddyPanierTableau.push(produit);
+      }
+      if (index === teddyPanierJson.length - 1) {
+        teddyPanierTableau.map((teddy, indexTableauFinal) => {
+          console.log(teddy);
+          let teddyLigneAchat = document.createElement('div');
+          teddyLigneAchat.className = "itemPanier";
+          let teddyLigneImg = document.createElement('img');
+          teddyLigneImg.className = "imgTeddy";
+          teddyLigneImg.src = teddy.image;
+          let teddyName = document.createElement('p');
+          teddyName.innerText = teddy.name;
+          let teddyColors = document.createElement('p');
+          teddyColors.innerText = "Couleurs choisis: " + teddy.colors;
+          let teddyPriceTotal = document.createElement('p');
+          teddyPriceTotal.innerText = "qté final: " + teddy.quantity + ", " + "prix total: " + (teddy.price * teddy.quantity) / 100 + " €";
+          prixTotal += teddy.price * teddy.quantity;
+          localStorage.setItem('prixTotal',prixTotal/100);
+          teddySommeTotal.innerText ="Total panier: "+  prixTotal/100 + ' €';
+          teddyLigneAchat.appendChild(teddyLigneImg);
+          teddyLigneAchat.appendChild(teddyName);
+          teddyLigneAchat.appendChild(teddyColors);
+          teddyLigneAchat.appendChild(teddyPriceTotal);
+          document.getElementById('panier').appendChild(teddyLigneAchat);
+          })
+      }
+    })
     })
 } else {
     console.log("Votre panier est vide");

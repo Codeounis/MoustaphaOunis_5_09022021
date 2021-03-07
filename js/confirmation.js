@@ -3,21 +3,20 @@ const orderId = paramsUrl.get("orderId");
 
 console.log(localStorage);
 
-
 let contact = JSON.parse(localStorage.getItem("contact"));
 
 let prixTotal = JSON.parse(localStorage.getItem("prixTotal"));
 
-function display (){
-    confirmation.innerHTML += `
+function display() {
+  confirmation.innerHTML += `
         <p>
-        Merci  ${contact.firstName } ${contact.lastName} pour votre commande chez Orinoco.
+        Merci  ${contact.firstName} ${contact.lastName} pour votre commande chez Orinoco.
         </p>
         <p>Nous avons bien reçu votre commande N° ${orderId} </br>
         D'un montant de : ${prixTotal} € </br>
         </p>
         Un email vous sera envoyé à l'adresse : </br> ${contact.email} a l'envoi de votre commande.  
-    `
-};
+    `;
+}
 
 display();
