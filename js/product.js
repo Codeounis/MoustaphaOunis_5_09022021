@@ -90,7 +90,7 @@ function createTeddyInfos(teddy) {
     // VARIABLE POUR RECUPERER LA COULEURS CHOISI
     let colorProduit = teddyColorsSelect.value;
 
-    // VARIABLE POUR RECUPERE L'ITEM "listePanier" DU LOCAL STORAGE
+    // VARIABLE POUR RECUPERER L'ITEM "listePanier" DU LOCAL STORAGE
     let ls = localStorage.getItem("listePanier");
 
     // VARIABLE VIDE QUI S'INITIALISERA EN FONCTION DE LA PRESENCE DU LOCAL STORAGE
@@ -130,7 +130,6 @@ function createTeddyInfos(teddy) {
 
       // SI LE PRODUIT EXISTE DEJA DANS LE TABLEAU
       if (indexProduit != undefined) {
-        
         //  QUANTITE RAJOUTE DE 1 DANS LE TABLEAU
         lsJSON[indexProduit].quantity++;
 

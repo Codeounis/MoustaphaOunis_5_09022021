@@ -1,159 +1,149 @@
-@import url('https://fonts.googleapis.com/css2?family=Miltonian&family=Raleway:wght@300&display=swap');
+/* IMPORTATION  */
+@import url("https://fonts.googleapis.com/css2?family=Miltonian&family=Raleway:wght@300&display=swap");
 
+/* DEFINITIONS COULEURS */
+.bg-pink {
+  background-color: #8927a7 !important;
+}
 
+.orange {
+  color: #d9832f !important;
+}
 
+.fadepink {
+  color: #f3e9f1 !important;
+}
 
+.logocolor {
+  color: #c964e1 !important;
+}
 
-
-
-
+/*  DEFINITION STYLE BALISE PRINCIPALE */
 body {
-    padding-top: 56px;
-    background-color: #f3e9f1;
-  }
-  
+  padding-top: 56px;
+  background-color: #f3e9f1;
+}
 
-  header{
-      margin-bottom: 50px;
-      font-family: 'Miltonian',Arial, Helvetica, sans-serif;
-      font-size: larger;
-  }
+header {
+  margin-bottom: 50px;
+  font-family: "Miltonian", Arial, Helvetica, sans-serif;
+  font-size: larger;
+}
 
-  footer{
-     background-color: #711966!important;;
-  }
+footer {
+  background-color: #711966 !important;
+}
 
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-  h1{
-      text-align: center;
-      margin-bottom: 25px;
-  }
+h2,
+h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
-  h2,h3{
-      text-align: center;
-      margin-bottom: 10px;
-  }
+/* AJUSTEMENT GENERAUX */
+.lienheader {
+  display: block;
+  padding: 0.5rem 1rem;
+}
 
+.lienheader:hover {
+  text-decoration: underline;
+}
 
-  .imgsize{
-      height: 250px;
-      object-fit:cover ;
-  }
+/* AJUSTEMENT STYLE PAGE INDEX */
+.imgsize {
+  height: 250px;
+  object-fit: cover;
+}
 
-  #orgaPanier{
-      justify-content: center;
-      padding: 10px 10px 0 10px;
-  }
-  
-  .recapPanier{
-      display: flex;
-      flex-wrap: wrap;
-      background-color: antiquewhite;
-      justify-content: center;
-      border: solid 2px #711966;
-      border-radius: 10px;
-      width: 100%;
-  }
+/* AJUSTEMENT STYLE PAGE PRODUIT */
+.align {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
-  .itemPanier{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 5px;
-      border: solid 1px #c964e1;
-      border-radius: 5px;
-      background-color: #ffc979;
-  }
+/*  AJUSTEMENT STYLE PAGE PANIER */
+#orgaPanier {
+  justify-content: center;
+  padding: 10px 10px 0 10px;
+}
 
-  .imgTeddy{
-      height: 120px;
-      width: 350px;
-      border-radius: 5px;
-      object-fit: cover;
-  }
+.recapPanier {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: antiquewhite;
+  justify-content: center;
+  border: solid 2px #711966;
+  border-radius: 10px;
+  width: 100%;
+}
 
-  .priceTeddy{
-      width: 100px;
-  }
+.itemPanier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  border: solid 1px #c964e1;
+  border-radius: 5px;
+  background-color: #ffc979;
+}
 
-  .reponsePanierVide{
-      position: fixed;
-      z-index: 1;
-      background-color: blueviolet;
-      color: black;
-      height: 100vh;
-      width:100vw;
-      opacity: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: -50px;
-  }
+.imgTeddy {
+  height: 120px;
+  width: 350px;
+  border-radius: 5px;
+  object-fit: cover;
+}
 
-  .noFormulaire{
-      display: none;
-  }
+.reponsePanierVide {
+  position: fixed;
+  z-index: 1;
+  background-color: blueviolet;
+  color: black;
+  height: 100vh;
+  width: 100vw;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
+}
 
-  .bg-pink{
-      background-color: #8927a7!important;
-  }
+.totalPanier {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border: solid 2px #d9832f;
+  font-size: 35px;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+  background-color: lightskyblue;
+  margin: 0px 20px;
+  border-radius: 25px;
+}
 
-  .orange{
-    color: #d9832f!important;
-  }
+.orgaFormulaire {
+  margin: 10px;
+}
 
-  .fadepink{
-    color: #f3e9f1!important;
-  }
+.formulaire {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0px;
+}
 
-  .logocolor{
-    color: #c964e1!important;
-  }
+.caseform {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 
-  .align{
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-  }
-  
-  .lienheader{
-    display: block;
-    padding: .5rem 1rem;
-  }
-
-  .lienheader:hover{
-      text-decoration: underline,blue;
-  }
-
-  .totalPanier{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-      border: solid 2px #d9832f;
-      font-size: 35px;
-      font-family: 'Raleway',Arial, Helvetica, sans-serif;
-      background-color: lightskyblue;
-      margin: 0px 20px;
-      border-radius: 25px;
-  }
-
-  .orgaFormulaire{
-      margin: 10px;
-  }
-
-
-  .formulaire{
-      display: flex;
-      flex-wrap: wrap;
-      margin: 10px 0px;
-  }
-
-  .caseform{
-      margin-right: 10px;
-      margin-bottom: 10px;
-  }
-
-  .logo{
-      width: 50%;
-  }
+/* AJUSTEMENT PAGE CONFIRMATION */
+.logo {
+  width: 50%;
+}

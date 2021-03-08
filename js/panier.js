@@ -110,6 +110,7 @@ document.getElementById("videpanier").appendChild(teddyClear);
 
 // VARIABLE PRODUCT NECESSAIRE POUR LA REQUETE POST
 let products = [];
+
 // LOGIQUE POUR REMPLIR LE TABLEAU PRODUCT DES ID DU PANIER
 if (teddyPanierJson != undefined) {
   products = teddyPanierJson.map((item) => {
@@ -154,7 +155,7 @@ envoiFormulaire.addEventListener("click", function (event) {
         return response.json();
       })
 
-      //  PUIS APPLICATION FONCTION POUR RECUPERER LA REPONSE DE L'API orderID
+      //  PUIS APPLICATION FONCTION R POUR RECUPERER LA REPONSE DE L'API orderID
       .then(function (r) {
         localStorage.setItem("contact", JSON.stringify(r.contact));
         window.location.assign("confirmation.html?orderId=" + r.orderId);

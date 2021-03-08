@@ -50,7 +50,7 @@ function createTeddyCard(teddy) {
   let cardBody = document.createElement("div");
   cardBody.className = "card-body";
 
-  // TITRE
+  // TITRE PRODUIT
   let cardTitle = document.createElement("h4");
   cardTitle.className = "card-title";
 
