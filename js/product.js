@@ -130,6 +130,7 @@ function createTeddyInfos(teddy) {
 
       // SI LE PRODUIT EXISTE DEJA DANS LE TABLEAU
       if (indexProduit != undefined) {
+        
         //  QUANTITE RAJOUTE DE 1 DANS LE TABLEAU
         lsJSON[indexProduit].quantity++;
 
