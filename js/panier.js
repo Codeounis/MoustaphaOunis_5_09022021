@@ -26,7 +26,7 @@ if (teddyPanierStorage != undefined) {
       .then(function (teddyApi) {
         let indexTeddyPanierTableau;
 
-        // BOUCLE QUI VA INTEGRER DANS UN TABLEAU LES OBJETS DU LOCAL STORAGE
+        // BOUCLE QUI VA INTEGRER DANS UN TABLEAU LES OBJETS DE L'API PAR RAPPORT AU ID PRESENTES DANS LE LOCAL STORAGE
         teddyPanierTableau.map((teddy, indexfinal) => {
           if (teddy.id === teddyApi._id) {
             indexTeddyPanierTableau = indexfinal;
@@ -42,7 +42,7 @@ if (teddyPanierStorage != undefined) {
             " " + teddyStorage.color + " qté:" + teddyStorage.quantity
           );
         }
-        // SI IL EXISTE PAS DANs LE TABLEAU
+        // SI IL EXISTE PAS DANS LE TABLEAU
         else {
           // CREATION D'UN OBJET PUIS AJOUT DANS LE TABLEAU
           let produit = {
@@ -90,7 +90,6 @@ if (teddyPanierStorage != undefined) {
   });
   //  SINON AFICHAGE D'UN MESSAGE COMME QUOI LE PANIER EST VIDE
 } else {
-  console.log("Votre panier est vide");
   let errorResponse = document.createElement("p");
   errorResponse.innerText = "Veuiller remplir votre panier pour commander.";
   errorResponse.className = "reponsePanierVide";
@@ -155,7 +154,7 @@ envoiFormulaire.addEventListener("click", function (event) {
         return response.json();
       })
 
-      //  PUIS APPLICATION FONCTION R POUR RECUPERER LA REPONSE DE L'API orderID
+      //  PUIS APPLICATION FONCTION POUR RECUPERER LA REPONSE DE L'API orderID
       .then(function (r) {
         localStorage.setItem("contact", JSON.stringify(r.contact));
         window.location.assign("confirmation.html?orderId=" + r.orderId);
