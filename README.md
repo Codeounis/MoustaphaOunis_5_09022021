@@ -9,5 +9,6 @@ Pour lançer le site web sur votre ordinateur en locale merci de suivre ces inst
 - ouvrir un terminal puis utiliser la commande "cd back_end" pour se diriger dedans,
 - utiliser la commande "npm install", 
 - une fois installé utiliser la commande "npm start" ou "node server",
+- ouvrir le fichier "index.html" sur votre navigateur
 
 Cordialement.
