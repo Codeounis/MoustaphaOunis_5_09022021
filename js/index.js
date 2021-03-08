@@ -1,9 +1,12 @@
-// LOGIQUE POUR CREATION DE L'ICONE SIGNALANT DES ARTICLES DANS LE PANIER
-
+// VARIABLES POUR CREATION DE L'ICONE SIGNALANT DES ARTICLES DANS LE PANIER
 let Panier = document.createElement("span");
 let PanierIcone = document.createElement("i");
+
+// INTEGRATION DE L'ICONE DANS LE HTML
 Panier.appendChild(PanierIcone);
 document.getElementById("lienPanier").appendChild(Panier);
+
+// LOGIQUE POUR GENERER OU NON L'ICONE SIGNALANT DES ARTICLES DANS LE PANIER
 if (localStorage.length > 0) {
   PanierIcone.title = "Des articles vous attendent !!";
   PanierIcone.className = "fas fa-exclamation orange";
@@ -16,7 +19,7 @@ fetch("http://localhost:3000/api/teddies")
     return response.json();
   })
   .then(function (teddyApi) {
-    // BOUCLE POUR GENERER LES PRODUITS VIA UNE FONCTION AVEC LES INFOS DE L'API
+    // BOUCLE POUR GENERER LES CARTES PRODUITS VIA UNE FONCTION AVEC LES INFOS DE L'API
     for (let index of teddyApi) {
       let teddy = index;
       createTeddyCard(teddy);
@@ -72,7 +75,7 @@ function createTeddyCard(teddy) {
   cardFooter.className = "card-footer";
   cardFooter.innerHTML = "<b>COLORS: </b>" + teddy.colors.join(", ");
 
-  // INTEGRATION DES BLOCS ENTRE EUX
+  // INTEGRATION DES BLOCS HTML POUR CREATION DE LA CARTE
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardPrice);
   cardBody.appendChild(cardText);
@@ -83,6 +86,6 @@ function createTeddyCard(teddy) {
 
   cardBlock.appendChild(card);
 
-  // INTEGRATION HTML
+  // INTEGRATION DE LA CARTE DANS LA PAGE HTML
   document.getElementById("rowProduct").appendChild(cardBlock);
 }
