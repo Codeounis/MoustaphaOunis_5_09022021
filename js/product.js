@@ -107,12 +107,6 @@ function createTeddyInfos(teddy) {
     // INTEGRATION DE L'ALERTE DANS LA PAGE HTML
     document.getElementById("messageAlert").appendChild(teddyAlerte);
 
-    // LOGIQUE POUR AFFICHER UNE ALERTE ET FAIRE UN RELOAD DE LA PAGE LORS DU TOUT PREMIER ARTICLE CHOISI
-    if (localStorage.length < 1) {
-      alert("Article ajouté au panier");
-      location.reload();
-    }
-
     // LOGIQUE AU CAS OU LE LOCAL STORAGE EXISTE
     if (ls != undefined) {
       // INITIALISATION DE LA VARIABLE QUI STOCKERA L'OBJET DANS UN TABLEAU AVEC LES INFOS ISSU DU LOCAL STORAGE
