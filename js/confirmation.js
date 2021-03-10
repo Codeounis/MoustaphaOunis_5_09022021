@@ -23,3 +23,8 @@ function display() {
 
 // UTILISATION DE LA FONCTION DISPLAY
 display();
+
+//  PUIS ON VIDE LE LOCAL STRORAGE POUR ENLEVER LE PANIER
+localStorage.removeItem("listePanier");
+localStorage.removeItem("contact");
+localStorage.removeItem("prixTotal");

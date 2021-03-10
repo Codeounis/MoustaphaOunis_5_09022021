@@ -102,7 +102,8 @@ let teddyClear = document.createElement("button");
 teddyClear.className = "btn btn-danger";
 teddyClear.innerText = "vider le panier";
 teddyClear.onclick = function () {
-  localStorage.clear();
+  localStorage.removeItem("listePanier");
+  localStorage.removeItem("prixTotal");
   location.reload();
 };
 document.getElementById("videpanier").appendChild(teddyClear);
