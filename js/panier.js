@@ -118,23 +118,63 @@ if (teddyPanierJson != undefined) {
   });
 }
 
-// RECUPERATIONS DES INFOS DU FORMULAIRE HTML
+// VARIABLE POUR DECLENCHER LA VALIDATION DU FORMULAIRE
 let envoiFormulaire = document.getElementById("envoiFormulaire");
 
-// FONCTION AU CLICK DE L'ENVOI FORMULAIRE
-envoiFormulaire.addEventListener("click", function (event) {
-  let form = document.getElementById("form");
-  event.preventDefault();
+//VARIABLE POUR RECUPERER LES INFOS DU FORMULAIRE
+let nom = document.getElementById("nom");
+let prenom = document.getElementById("prenom");
+let adresse = document.getElementById("adresse");
+let ville = document.getElementById("ville");
+let email = document.getElementById("email");
 
-  // LOGIQUE POUR CREER LA VARIABLE CONTACT NECESSAIRE POUR LA REQUETE POST
-  if (form.reportValidity() == true) {
-    let contact = {
-      firstName: document.getElementById("nom").value,
-      lastName: document.getElementById("prenom").value,
-      address: document.getElementById("adresse").value,
-      city: document.getElementById("ville").value,
-      email: document.getElementById("email").value,
-    };
+//VARIABLE POUR EFFECTUER LES TEST DE CARACTERE
+let prenomNomVilleValid = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,30}$/;
+let adresseValid = /^[A-Z-a-z-0-9\s]{5,80}$/;
+let emailValid =/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+// DECLENCHEMENT DE L'ENVOI DU FORMULAIRE
+envoiFormulaire.addEventListener('click',validity);
+
+
+//  FONCTION VERIFICATION DU FORMULAIRE + POST 
+function validity(event){
+
+  //  VERIFICATION NOM EST VALIDE 
+  if (prenomNomVilleValid.test(nom.value) == false){
+      event.preventDefault();
+      alert("votre nom n'est pas conforme")
+
+      // VERIFICATION SI PRENOM EST VALIDE
+  } else if (prenomNomVilleValid.test(prenom.value) == false){
+      event.preventDefault();
+      alert("votre prénom n'est pas conforme")
+
+      // VERIFICATION SI L'ADRESSE EST VALIDE
+  } else if (adresseValid.test(adresse.value) == false){
+      event.preventDefault();
+      alert("votre adresse n'est pas conforme")
+
+      // VERIFICATION SI LA VILLE EST VALIDE
+  } else if (prenomNomVilleValid.test(ville.value) == false){
+      event.preventDefault();
+      alert("votre ville n'est pas conforme")
+
+      // VERIFICATION SI L'EMAIL EST VALIDE
+  } else if (emailValid.test(email.value) == false){
+      event.preventDefault();
+      alert("votre adresse mail n'est pas conforme")
+  } else {event.preventDefault();
+
+  // CREATION VARIABLE CONTACT NECESSAIRE POUR LA REQUETE POST
+
+  let contact = {
+    firstName: nom.value,
+    lastName: prenom.value,
+    address: adresse.value,
+    city: ville.value,
+    email: email.value,
+  }
     // CREATION VARIABLE POUR LE BODY DE LA REQUETE POST EN JSON
     let formulaireClient = JSON.stringify({
       contact,
@@ -166,4 +206,4 @@ envoiFormulaire.addEventListener("click", function (event) {
         console.log("problème API");
       });
   }
-});
+}
